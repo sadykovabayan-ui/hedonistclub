@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Hedonist Club</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="canonical" href="https://hedonistclub.kz/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hedonistclub.kz/">
+<meta property="og:site_name" content="The Hedonist Club">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Каш × Калкан — авторский бутик-тур, 18–24 сентября 2026">
+<meta property="og:description" content="Приватная вилла над бухтой, яхта, камерная женская группа. 7 дней на Ликийском побережье.">
+<meta property="og:image" content="https://hedonistclub.kz/images/hero.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="1200">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#071620">
+<meta name="description" content="Авторский бутик-тур Каш × Калкан, 18–24 сентября 2026. Приватная вилла с видом на море, яхта, камерная женская группа.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prata&family=Playfair+Display:ital,wght@0,500;1,400&family=Golos+Text:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap">
+
+<style>
+/* ─────────────────────────  TOKENS  ───────────────────────── */
+:root{
+  --ink:#071620;
+  --ink-2:#0B1F2C;
+  --sand:#EDE3D2;
+  --sand-2:#C9BCA8;
+  --dim:#8C9BA3;
+  --line:rgba(237,227,210,.14);
+  --line-soft:rgba(237,227,210,.07);
+
+  --terra:#D4512E;        /* акцент — плашки, линии */
+  --terra-lt:#F0794F;     /* акцент светлее — мелкий текст на тёмном */
+  --btn-text:#FFF6F0;     /* текст на плашке акцента */
+  --paper:#EDE6D8;
+  --r:14px;
+
+  --display:"Prata","Times New Roman",Georgia,serif;
+  --sans:"Golos Text","Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+
+  --gut:clamp(20px,5vw,72px);
+  --maxw:1320px;
+  --sec:clamp(68px,11vw,160px);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--ink);
+  color:var(--sand);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  overflow-wrap:break-word;
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--terra-lt);outline-offset:3px;border-radius:2px}
+
+/* ─────────────────────────  PRIMITIVES  ───────────────────────── */
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
+.section{padding-block:var(--sec)}
+
+.eyebrow{
+  font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--dim);margin:0 0 clamp(18px,3vw,34px);
+  display:flex;align-items:center;gap:14px;
+}
+.eyebrow::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+.eyebrow .n{color:var(--terra-lt)}
+
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0}
+.h2{font-size:clamp(2rem,5.2vw,4.1rem);line-height:1.06;letter-spacing:-.01em}
+.lede{font-size:clamp(1.02rem,1.55vw,1.28rem);line-height:1.68;color:var(--sand-2);max-width:62ch}
+p{margin:0 0 1.1em}
+p:last-child{margin-bottom:0}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+  padding:17px 30px;border-radius:999px;text-decoration:none;border:1px solid transparent;
+  transition:background .35s ease,color .35s ease,border-color .35s ease,transform .35s ease;
+  cursor:pointer;text-align:center;
+}
+.btn--solid{background:var(--terra);color:var(--btn-text)}
+.btn--solid:hover{background:var(--sand);color:var(--ink);transform:translateY(-2px)}
+.btn--ghost{border-color:var(--line);color:var(--sand)}
+.btn--ghost:hover{border-color:var(--sand);background:rgba(237,227,210,.06)}
+.btn .ar{transition:transform .35s ease}
+.btn:hover .ar{transform:translateX(5px)}
+
+/* ─────────────────────────  NAV  ───────────────────────── */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:60;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;
+  padding:13px var(--gut);
+  transition:background .4s ease,backdrop-filter .4s ease,border-color .4s ease;
+  border-bottom:1px solid transparent;
+}
+.nav.stuck{background:rgba(7,22,32,.86);backdrop-filter:blur(14px) saturate(1.2);border-bottom-color:var(--line-soft)}
+.brand{display:flex;flex-direction:column;align-items:center;gap:9px;text-align:center;
+  line-height:1;text-decoration:none;justify-self:center}
+.brand .mark{flex:0 0 auto;color:var(--terra-lt);display:block}
+.brand .mark svg{display:block;width:30px;height:auto}
+.brand-txt{display:flex;flex-direction:column;align-items:center}
+.brand b{font-family:"Playfair Display",var(--display);font-weight:500;font-size:clamp(11px,1.7vw,13px);
+  text-transform:uppercase;letter-spacing:.19em;line-height:1.55;display:block;text-indent:.19em}
+.brand-txt>span{font-size:8.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--dim);margin-top:8px;white-space:nowrap}
+.nav .brand-txt>span{display:none}
+.brand i{font-family:"Playfair Display",var(--display);font-style:italic;font-size:12px;color:var(--terra-lt);margin-top:7px;letter-spacing:.01em}
+.nav-links{display:flex;gap:30px;align-items:center;justify-self:start;grid-column:1;grid-row:1}
+.nav>.brand{grid-column:2;grid-row:1}
+.nav>.btn{justify-self:end;grid-column:3;grid-row:1}
+.nav-links a{
+  font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--sand-2);
+  text-decoration:none;position:relative;padding-block:4px;transition:color .3s ease;
+}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--terra-lt);transition:width .35s ease}
+.nav-links a:hover{color:var(--sand)}
+.nav-links a:hover::after{width:100%}
+.nav .btn{padding:12px 22px;font-size:11px}
+@media(max-width:1000px){.nav-links{display:none}}
+@media(max-width:760px){.nav .btn{display:none}}
+
+/* ─────────────────────────  HERO  ───────────────────────── */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%;
+  animation:heroZoom 16s ease-out forwards}
+@keyframes heroZoom{from{transform:scale(1.09)}to{transform:scale(1)}}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(to top,rgba(7,22,32,.99) 0%,rgba(7,22,32,.98) 26%,rgba(7,22,32,.93) 46%,rgba(7,22,32,.74) 62%,rgba(7,22,32,.34) 80%,rgba(7,22,32,.66) 100%),
+    radial-gradient(130% 90% at 12% 92%,rgba(7,22,32,.75),transparent 62%);
+}
+.hero-inner{position:relative;z-index:2;width:100%;max-width:var(--maxw);margin-inline:auto;padding:120px var(--gut) clamp(34px,6vw,64px)}
+.hero-mark{
+  position:absolute;left:calc(var(--gut) - 4px);top:50%;z-index:2;
+  transform:rotate(180deg) translateY(50%);writing-mode:vertical-rl;
+  font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:rgba(237,227,210,.5);
+}
+@media(max-width:1240px){.hero-mark{display:none}}
+
+.hero-kicker{
+  font-size:clamp(10px,2.4vw,11.5px);letter-spacing:.22em;text-transform:uppercase;color:var(--sand);
+  margin:0 0 clamp(18px,2.4vw,26px);display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  text-shadow:0 1px 3px rgba(7,22,32,.95),0 2px 22px rgba(7,22,32,.9);font-weight:500;
+}
+.hero-kicker i{width:22px;height:1px;background:var(--terra-lt);display:inline-block;font-style:normal}
+.hero h1{font-size:clamp(3rem,12.6vw,9.6rem);line-height:.88;letter-spacing:-.02em;margin:0}
+.hero h1 .x{color:var(--terra-lt);font-style:normal;padding-inline:.06em}
+.hero-sub{margin:clamp(18px,3vw,32px) 0 0;font-size:clamp(1rem,1.5vw,1.22rem);color:var(--sand-2);max-width:44ch}
+.hero-meta{
+  margin-top:clamp(28px,5vw,56px);padding-top:22px;border-top:1px solid var(--line-soft);
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;
+}
+.hero-meta div span{display:block;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-bottom:7px}
+.hero-meta div b{font-family:var(--display);font-weight:400;font-size:clamp(.95rem,1.6vw,1.3rem);letter-spacing:.01em;line-height:1.3;display:block}
+@media(max-width:760px){.hero-meta{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 18px}}
+
+.hero-cta{margin-top:clamp(26px,4vw,44px);display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:560px){
+  .hero-cta{flex-direction:column;align-items:stretch}
+  .hero-cta .btn{width:100%}
+}
+
+.rise{opacity:0;transform:translateY(30px);animation:rise .95s cubic-bezier(.22,.8,.3,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.d1{animation-delay:.15s}.d2{animation-delay:.32s}.d3{animation-delay:.48s}.d4{animation-delay:.62s}.d5{animation-delay:.76s}
+
+/* ─────────────────────────  MANIFESTO  ───────────────────────── */
+.manifest{border-bottom:1px solid var(--line-soft)}
+.manifest-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(30px,7vw,110px);align-items:start}
+.manifest-photo{margin-top:clamp(24px,3.5vw,40px);overflow:hidden;border-radius:var(--r);background:var(--ink-2)}
+.manifest-photo img{width:100%;aspect-ratio:16/11;object-fit:cover}
+@media(max-width:900px){.manifest-grid{grid-template-columns:1fr;gap:30px}}
+.pull{font-family:var(--display);font-size:clamp(1.5rem,3.4vw,2.75rem);line-height:1.24;letter-spacing:-.01em;margin:0;color:var(--sand)}
+.pull em{font-style:normal;color:var(--terra-lt)}
+.manifest-body p{color:var(--sand-2);font-size:clamp(1rem,1.4vw,1.15rem)}
+
+/* ─────────────────────────  OFFERS  ───────────────────────── */
+.offers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(36px,6vw,90px)}
+@media(max-width:820px){.offers{grid-template-columns:minmax(0,1fr)}}
+.offer{display:flex;gap:18px;padding:24px 0;border-top:1px solid var(--line-soft)}
+.offer .idx{font-family:var(--display);font-size:13px;color:var(--terra-lt);flex:0 0 auto;width:24px;padding-top:4px;font-variant-numeric:tabular-nums}
+.offer h3{font-family:var(--sans);font-size:16px;font-weight:600;letter-spacing:.01em;margin:0 0 6px;color:var(--sand)}
+.offer p{margin:0;font-size:15px;line-height:1.6;color:var(--dim)}
+
+/* ─────────────────────────  PROGRAMME  ───────────────────────── */
+.day{display:grid;grid-template-columns:170px minmax(0,1fr) 330px;gap:clamp(20px,4vw,56px);
+  padding:clamp(30px,5vw,56px) 0;border-top:1px solid var(--line-soft);position:relative}
+.day-photo{overflow:hidden;border-radius:var(--r);background:var(--ink-2);align-self:start}
+.day-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.7,.3,1)}
+.day-photo:hover img{transform:scale(1.05)}
+@media(max-width:1100px){
+  .day{grid-template-columns:170px minmax(0,1fr)}
+  .day-photo{grid-column:1/-1;margin-top:8px}
+  .day-photo img{aspect-ratio:16/9}
+}
+.day:first-of-type{border-top:1px solid var(--line)}
+.day-mark{position:relative}
+.day-mark .num{font-family:var(--display);font-size:clamp(2rem,5vw,3.6rem);line-height:.9;color:var(--sand);font-variant-numeric:tabular-nums;display:block}
+.day-mark .date{display:block;margin-top:12px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.day-mark .dot{position:absolute;right:-1px;top:14px;width:7px;height:7px;border-radius:50%;background:var(--terra);opacity:.85}
+@media(max-width:820px){
+  .day{grid-template-columns:minmax(0,1fr);gap:14px}
+  .day-mark{order:0;display:flex;align-items:baseline;gap:14px}
+  .day-photo{order:1;grid-column:auto;margin-top:2px}
+  .day-photo img{aspect-ratio:16/10}
+  .day-body{order:2}
+  .day-mark .num{font-size:1.9rem}
+  .day-mark .date{margin-top:0}
+  .day-mark .dot{display:none}
+}
+.day-body h3{font-family:var(--display);font-size:clamp(1.4rem,2.8vw,2.2rem);line-height:1.14;margin:0 0 14px}
+.day-body p{color:var(--sand-2);max-width:56ch;font-size:16.5px}
+.day-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px;max-width:58ch}
+.day-list li{position:relative;padding-left:22px;font-size:16.5px;line-height:1.55;color:var(--sand-2)}
+.day-list li::before{content:"";position:absolute;left:0;top:.7em;width:9px;height:1px;background:var(--terra-lt)}
+.note{margin-top:clamp(26px,4vw,42px);padding-top:22px;border-top:1px solid var(--line-soft);
+  font-size:14.5px;line-height:1.6;color:var(--dim);max-width:64ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tag{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);
+  border:1px solid var(--line-soft);border-radius:999px;padding:7px 13px}
+
+/* ─────────────────────────  MOSAIC  ───────────────────────── */
+.mosaic{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(8px,1.1vw,16px);margin-top:clamp(30px,5vw,56px)}
+.mo{position:relative;overflow:hidden;background:var(--ink-2);border-radius:var(--r)}
+.mo img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.7,.3,1)}
+.mo:hover img{transform:scale(1.05)}
+.mo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;z-index:1;pointer-events:none;
+  background:linear-gradient(to top,rgba(7,22,32,.72),rgba(7,22,32,0))}
+.mo .cap{position:absolute;left:13px;bottom:11px;z-index:2;
+  font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(237,227,210,.92);
+  text-shadow:0 1px 12px rgba(7,22,32,.95)}
+.mo-a{grid-column:span 7;aspect-ratio:4/3}
+.mo-b{grid-column:span 5;aspect-ratio:auto}
+.mo-c,.mo-d,.mo-e{grid-column:span 4;aspect-ratio:3/4}
+.mo-h{grid-column:span 7;aspect-ratio:4/3}
+.mo-i{grid-column:span 5;aspect-ratio:auto}
+.mo-f,.mo-g{grid-column:span 6;aspect-ratio:16/9}
+.mo-wide{grid-column:span 12;aspect-ratio:21/9}
+@media(max-width:820px){
+  .mo-a,.mo-b,.mo-f,.mo-g,.mo-h{grid-column:span 12;aspect-ratio:16/10}
+  .mo-c,.mo-d,.mo-e,.mo-i{grid-column:span 6;aspect-ratio:3/4}
+  .mo-h{order:1}.mo-f{order:2}.mo-g{order:3}
+  .mo-wide{aspect-ratio:16/9}
+  :root{--r:12px}
+}
+
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,3vw,40px);margin-top:clamp(36px,5vw,64px);
+  padding-top:30px;border-top:1px solid var(--line-soft)}
+.facts div span{display:block;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+.facts div b{font-family:var(--display);font-weight:400;font-size:clamp(1rem,1.7vw,1.35rem);line-height:1.3;display:block}
+@media(max-width:760px){.facts{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}}
+
+/* ─────────────────────────  PLACE  ───────────────────────── */
+.place-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,1.6vw,22px);margin-top:clamp(30px,5vw,56px)}
+.place-grid figure{margin:0;position:relative;overflow:hidden;border-radius:var(--r)}
+.place-grid img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.7,.3,1)}
+.place-grid figure:hover img{transform:scale(1.05)}
+.place-grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 16px 14px;
+  background:linear-gradient(to top,rgba(7,22,32,.9),transparent);
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase}
+@media(max-width:760px){.place-grid{grid-template-columns:minmax(0,1fr)}.place-grid img{aspect-ratio:4/3}}
+
+.twocol{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,6vw,90px)}
+@media(max-width:900px){.twocol{grid-template-columns:1fr;gap:26px}}
+
+/* ─────────────────────────  PRICE  ───────────────────────── */
+.price-card{background:var(--ink-2);border:1px solid var(--line-soft);padding:clamp(24px,4.4vw,58px);border-radius:18px}
+.rates{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(18px,3vw,44px)}
+@media(max-width:760px){.rates{grid-template-columns:1fr;gap:6px}}
+.rate{padding:24px 0;border-top:2px solid var(--terra)}
+.rate .who{display:block;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:14px;line-height:1.7}
+.rate b{font-family:var(--display);font-weight:400;font-size:clamp(1.85rem,4.6vw,2.9rem);line-height:1;display:block;font-variant-numeric:tabular-nums}
+.rate b i{font-style:normal;font-size:.62em;color:var(--sand-2);padding-left:.12em}
+.rate small{display:block;margin-top:12px;font-size:14px;color:var(--dim);line-height:1.55}
+.rate--new{border-top-color:var(--line)}
+
+.incl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);margin-top:clamp(32px,5vw,58px);
+  padding-top:clamp(26px,4vw,44px);border-top:1px solid var(--line-soft)}
+@media(max-width:760px){.incl{grid-template-columns:1fr;gap:30px}}
+.incl h4{font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin:0 0 18px}
+.incl ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.incl li{position:relative;padding-left:24px;font-size:15.5px;line-height:1.55;color:var(--sand-2)}
+.incl li::before{position:absolute;left:0;top:0;font-size:14px}
+.incl--yes li::before{content:"—";color:var(--terra-lt)}
+.incl--no li{color:var(--dim)}
+.incl--no li::before{content:"×";color:var(--dim)}
+
+.terms{margin-top:clamp(28px,4vw,44px);padding-top:24px;border-top:1px solid var(--line-soft);
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,4vw,56px)}
+@media(max-width:760px){.terms{grid-template-columns:1fr;gap:22px}}
+.terms span{display:block;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+.terms p{margin:0;font-size:15px;color:var(--sand-2);line-height:1.55}
+
+/* ─────────────────────────  FAQ  ───────────────────────── */
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line-soft)}
+.faq summary{list-style:none;cursor:pointer;padding:24px 40px 24px 0;position:relative;
+  font-family:var(--display);font-size:clamp(1.05rem,1.9vw,1.42rem);line-height:1.32;transition:color .3s ease}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--terra-lt)}
+.faq summary::after{content:"";position:absolute;right:4px;top:50%;width:13px;height:13px;margin-top:-6px;
+  background:linear-gradient(var(--sand-2),var(--sand-2)) center/13px 1px no-repeat,
+             linear-gradient(var(--sand-2),var(--sand-2)) center/1px 13px no-repeat;
+  transition:transform .35s ease}
+.faq details[open] summary::after{transform:rotate(90deg);
+  background:linear-gradient(var(--terra-lt),var(--terra-lt)) center/13px 1px no-repeat}
+.faq .ans{padding:0 clamp(0px,8vw,120px) 28px 0;color:var(--sand-2);font-size:16px;max-width:66ch}
+
+/* ─────────────────────────  BOOK  ───────────────────────── */
+.book{position:relative;overflow:hidden}
+.book-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.book::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(7,22,32,.96) 0%,rgba(7,22,32,.86) 45%,rgba(7,22,32,.6) 100%)}
+@media(max-width:900px){
+  .book::after{background:linear-gradient(to bottom,rgba(7,22,32,.93) 0%,rgba(7,22,32,.9) 55%,rgba(7,22,32,.96) 100%)}
+}
+.book .wrap{position:relative;z-index:2}
+.contacts{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;gap:clamp(18px,3.4vw,52px);
+  margin-top:clamp(30px,4.5vw,52px);padding-top:28px;border-top:1px solid var(--line-soft)}
+@media(max-width:760px){.contacts{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px 18px;justify-content:stretch}}
+.contacts a,.contacts div{text-decoration:none}
+.contacts span{display:block;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+.contacts b{font-family:var(--display);font-weight:400;font-size:clamp(.95rem,1.5vw,1.22rem);transition:color .3s ease;display:block;overflow-wrap:anywhere}
+.contacts .wide{grid-column:1/-1}
+.contacts a:hover b{color:var(--terra-lt)}
+
+/* ─────────────────────────  FOOTER  ───────────────────────── */
+.foot{border-top:1px solid var(--line-soft);padding-block:clamp(32px,5vw,54px)}
+.foot-in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:26px}
+.foot small{color:var(--dim);font-size:12.5px;line-height:1.7;display:block;max-width:60ch}
+.foot .brand{gap:13px}
+.foot .brand .mark svg{width:42px}
+.foot .brand b{font-size:clamp(13px,2vw,16px);letter-spacing:.2em}
+.foot .brand i{font-size:13px;margin-top:9px}
+
+/* ─────────────────────────  MOBILE BAR  ───────────────────────── */
+.mobar{
+  position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;
+  align-items:center;justify-content:space-between;gap:14px;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom));
+  background:rgba(7,22,32,.94);backdrop-filter:blur(14px) saturate(1.2);
+  border-top:1px solid var(--line-soft);
+}
+.mobar .who{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:4px}
+.mobar .val{font-family:var(--display);font-size:16px;line-height:1;display:block;white-space:nowrap}
+.mobar .btn{padding:14px 22px;font-size:11px;flex:0 0 auto}
+@media(max-width:760px){
+  .mobar{display:flex}
+  body{padding-bottom:74px}
+}
+
+/* ─────────────────────────  REVEAL  ───────────────────────── */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.8,.3,1),transform .9s cubic-bezier(.22,.8,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-delay:0s!important;transition-duration:.001ms!important}
+  .rise,.reveal{opacity:1;transform:none}
+  .hero-img{animation:none}
+}
+</style>
+
+</head>
+<body>
+<!-- ══════════════════════════  NAV  ══════════════════════════ -->
+<nav class="nav" id="nav">
+  <a class="brand" href="#top"><span class="mark" aria-hidden="true"><svg viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 26h94" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M29 26a21 21 0 0 1 42 0" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span><span class="brand-txt"><b>The&nbsp;Hedonist<br>Club</b><span>Kaş × Kalkan</span></span></a>
+  <div class="nav-links">
+    <a href="#program">Программа</a>
+    <a href="#villa">Вилла</a>
+    <a href="#place">Место</a>
+    <a href="#price">Стоимость</a>
+    <a href="#faq">Вопросы</a>
+  </div>
+  <a class="btn btn--solid" href="#book">Забронировать</a>
+</nav>
+
+<!-- ══════════════════════════  HERO  ══════════════════════════ -->
+<header class="hero" id="top">
+  <img class="hero-img" src="images/hero.jpg" alt="Бассейн приватной виллы над бухтой Калкана">
+  <div class="hero-mark">The Hedonist Club · Turkey · MMXXVI</div>
+  <div class="hero-inner">
+    <p class="hero-kicker rise d1"><i></i> Авторский бутик-тур · 7 дней / 6 ночей</p>
+    <h1 class="rise d2">Каш <em class="x">×</em> Калкан</h1>
+    <p class="hero-sub rise d3">Другая Турция: бирюзовая вода, приватная вилла над бухтой и очень маленькая компания.</p>
+    <div class="hero-meta rise d4">
+      <div><span>Даты</span><b>18–24 сентября 2026</b></div>
+      <div><span>Место</span><b>Калкан, Ликийское побережье</b></div>
+      <div><span>Формат</span><b>Камерная женская группа</b></div>
+      <div><span>Жильё</span><b>Приватная вилла с бассейном</b></div>
+    </div>
+    <div class="hero-cta rise d5">
+      <a class="btn btn--solid" href="#book">Забронировать место <span class="ar">→</span></a>
+      <a class="btn btn--ghost" href="#program">Смотреть программу</a>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════  MANIFESTO  ══════════════════════════ -->
+<section class="section manifest">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="n">01</span> Приглашение</p>
+    <div class="manifest-grid">
+      <h2 class="pull reveal">Раннее утро. Ты открываешь глаза от тёплых лучей и понимаешь, что находишься на вилле у Средиземного моря — <em>в компании самых прекрасных девушек.</em></h2>
+      <div class="manifest-body reveal">
+        <p>Каш и Калкан — два маленьких городка на Ликийском побережье, куда не доезжают большие туры. Белые дома в бугенвиллее, лестницы прямо к воде и море такого цвета, что ему не верят на фотографиях. Мы никуда не бежим: неделя устроена так, чтобы в ней было и море, и разговоры, и тишина.</p>
+        <div class="manifest-photo"><img src="images/pl_alley.jpg" alt="Улочка со ступенями, спускающаяся к морю" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════  WHAT AWAITS  ══════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="n">02</span> Что нас ждёт</p>
+    <h2 class="h2 reveal" style="max-width:16ch;margin-bottom:clamp(30px,5vw,56px)">Девять причин собрать чемодан</h2>
+    <div class="offers">
+      <div class="offer reveal"><div class="idx">01</div><div><h3>Приватная вилла в Калкане</h3><p>Только наша компания: вид на бухту, свой бассейн, террасы и сад.</p></div></div>
+      <div class="offer reveal"><div class="idx">02</div><div><h3>Комфортный трансфер</h3><p>Из аэропорта и обратно, и весь тур. О логистике не думаете.</p></div></div>
+      <div class="offer reveal"><div class="idx">03</div><div><h3>Неспешные прогулки</h3><p>Улочки Каша и Калкана без расписания и гида с флажком.</p></div></div>
+      <div class="offer reveal"><div class="idx">04</div><div><h3>Выход в море на яхте</h3><p>Бухты, куда не добраться с берега, и закат прямо на воде.</p></div></div>
+      <div class="offer reveal"><div class="idx">05</div><div><h3>Завтраки на вилле</h3><p>Долгие, у бассейна, без будильника и шведского стола.</p></div></div>
+      <div class="offer reveal"><div class="idx">06</div><div><h3>Лучшие рестораны региона</h3><p>Самые красивые места побережья и долгие тёплые вечера.</p></div></div>
+      <div class="offer reveal"><div class="idx">07</div><div><h3>Практика каждое утро</h3><p>Йога, дыхание и медитации на террасе, пока город ещё спит.</p></div></div>
+      <div class="offer reveal"><div class="idx">08</div><div><h3>Два бич-клаба побережья</h3><p>Клуб в Калкане и целый день в Mahal среди олив, с лестницами в воду.</p></div></div>
+      <div class="offer reveal"><div class="idx">09</div><div><h3>Красивые кадры</h3><p>Съёмка в самых живописных точках побережья.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════  PROGRAMME  ══════════════════════════ -->
+<section class="section" id="program">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="n">03</span> Программа</p>
+    <h2 class="h2 reveal" style="max-width:14ch;margin-bottom:clamp(30px,5vw,60px)">Семь дней, собранных по нотам</h2>
+
+    <article class="day reveal">
+      <div class="day-mark"><span class="dot"></span><span class="num">01</span><span class="date">18 сентября</span></div>
+      <div class="day-body">
+        <h3>Первый вечер на вилле</h3>
+        <ul class="day-list">
+          <li>Встреча в аэропорту — трансфер на виллу</li>
+          <li>Заселение и время, чтобы выдохнуть после дороги</li>
+          <li>Знакомство с организаторами и остальными участницами</li>
+          <li>Приветственный ужин на террасе, среди свечей и первых разговоров</li>
+          <li>Небольшой подарок каждой участнице</li>
+          <li>Вечер без программы — для тех, кто хочет остаться и поговорить дольше</li>
+        </ul>
+        <div class="tags"><span class="tag">Трансфер</span><span class="tag">Заселение</span><span class="tag">Приветственный ужин</span></div>
+      </div>
+          <div class="day-photo"><img src="images/villa_night.jpg" alt="Вилла вечером, подсвеченный фасад и бассейн" loading="lazy"></div>
+    </article>
+
+    <article class="day reveal">
+      <div class="day-mark"><span class="dot"></span><span class="num">02</span><span class="date">19 сентября</span></div>
+      <div class="day-body">
+        <h3>Утро не спеша, день у моря</h3>
+        <ul class="day-list">
+          <li>Практика от организаторов: йога, дыхательные практики, медитации и настрой на день</li>
+          <li>Завтрак на вилле</li>
+          <li>Переезд в один из самых атмосферных бич-клабов Калкана — море, музыка, шезлонги и вид на бухту</li>
+          <li>Остаток дня у моря, время для купания и фотографий</li>
+        </ul>
+        <div class="tags"><span class="tag">Практика</span><span class="tag">Бич-клаб</span><span class="tag">Море</span></div>
+      </div>
+          <div class="day-photo"><img style="object-position:50% 45%" src="images/d2_bay.jpg" alt="Бухта с бирюзовой водой на побережье" loading="lazy"></div>
+    </article>
+
+    <article class="day reveal">
+      <div class="day-mark"><span class="dot"></span><span class="num">03</span><span class="date">20 сентября</span></div>
+      <div class="day-body">
+        <h3>Горы, завтрак с видом и вечер в Калкане</h3>
+        <ul class="day-list">
+          <li>Едем в ресторан в горной деревне — домашний турецкий завтрак с видом на море и горные хребты</li>
+          <li>Дорога сама по себе часть впечатления: серпантин, панорамы, остановки для фото</li>
+          <li>Возвращение на виллу</li>
+          <li>Вечерняя прогулка по старому городу Калкана — мощёные улицы, белые дома, бугенвиллия</li>
+          <li>Ужин на закате с видом на бухту</li>
+          <li>Бар в Калкане для тех, кто хочет продолжить вечер</li>
+        </ul>
+        <div class="tags"><span class="tag">Горная деревня</span><span class="tag">Старый Калкан</span><span class="tag">Закат</span></div>
+      </div>
+          <div class="day-photo"><img src="images/d3_breakfast.jpg" alt="Турецкий завтрак: множество маленьких тарелок на столе" loading="lazy"></div>
+    </article>
+
+    <article class="day reveal">
+      <div class="day-mark"><span class="dot"></span><span class="num">04</span><span class="date">21 сентября</span></div>
+      <div class="day-body">
+        <h3>Яхта и закат в море</h3>
+        <ul class="day-list">
+          <li>Практика от организаторов: йога, дыхательные практики, медитации и настрой на день</li>
+          <li>Завтрак на вилле</li>
+          <li>После обеда выходим в море на яхте</li>
+          <li>Остановки для купания в самых прозрачных бухтах</li>
+          <li>Закат встречаем прямо на воде, с бокалом и музыкой</li>
+        </ul>
+        <div class="tags"><span class="tag">Яхта</span><span class="tag">Купание</span><span class="tag">Закат на воде</span></div>
+      </div>
+          <div class="day-photo"><img style="object-position:50% 38%" src="images/d4_gulet.jpg" alt="Яхта на якоре в бухте на закате" loading="lazy"></div>
+    </article>
+
+    <article class="day reveal">
+      <div class="day-mark"><span class="dot"></span><span class="num">05</span><span class="date">22 сентября</span></div>
+      <div class="day-body">
+        <h3>Каш</h3>
+        <ul class="day-list">
+          <li>Практика от организаторов: йога, дыхательные практики, медитации и настрой на день</li>
+          <li>Завтрак на вилле</li>
+          <li>Поездка в Каш</li>
+          <li>Прогулка по старому городу, шопинг</li>
+          <li>Смотровая у античного амфитеатра</li>
+          <li>Бутики, лавки и кофе у гавани</li>
+          <li>Ужин на закате с видом на воду</li>
+        </ul>
+        <div class="tags"><span class="tag">Каш</span><span class="tag">Амфитеатр</span><span class="tag">Лавки и кофе</span></div>
+      </div>
+          <div class="day-photo"><img src="images/d5_lamp.jpg" alt="Турецкий фонарь в лавке" loading="lazy"></div>
+    </article>
+
+    <article class="day reveal">
+      <div class="day-mark"><span class="dot"></span><span class="num">06</span><span class="date">23 сентября</span></div>
+      <div class="day-body">
+        <h3>Целый день в Mahal Beach Club</h3>
+        <ul class="day-list">
+          <li>Практика от организаторов: йога, дыхательные практики, медитации и настрой на день</li>
+          <li>Завтрак на вилле</li>
+          <li>Переезд в Mahal Beach Club — платформы среди оливковых деревьев, лестницы прямо в воду</li>
+          <li>Весь день у моря — без переездов и планов</li>
+          <li>Возвращение на виллу к вечеру</li>
+          <li>Свободный ужин, по желанию каждой</li>
+        </ul>
+        <div class="tags"><span class="tag">Mahal Beach Club</span><span class="tag">Целый день у моря</span></div>
+      </div>
+          <div class="day-photo"><img style="object-position:50% 34%" src="images/d6_beachclub.jpg" alt="Деревянная платформа бич-клуба с соломенными зонтами над морем" loading="lazy"></div>
+    </article>
+
+    <article class="day reveal">
+      <div class="day-mark"><span class="dot"></span><span class="num">07</span><span class="date">24 сентября</span></div>
+      <div class="day-body">
+        <h3>Отъезд</h3>
+        <ul class="day-list">
+          <li>Ранний подъём</li>
+          <li>Трансфер в аэропорт</li>
+        </ul>
+        <div class="tags"><span class="tag">Ранний подъём</span><span class="tag">Трансфер</span></div>
+      </div>
+          <div class="day-photo"><img style="object-position:78% 50%" src="images/d7_sail.jpg" alt="Одинокий парус в спокойном море" loading="lazy"></div>
+    </article>
+
+    <p class="note reveal">Обеды, ужины и посещение бич-клабов оплачиваются самостоятельно.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════  VILLA  ══════════════════════════ -->
+<section class="section" id="villa">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="n">04</span> Вилла</p>
+    <div class="twocol reveal">
+      <h2 class="h2">Дом только для нас</h2>
+      <p class="lede">Мы не селимся в отель. Всю неделю у нас своя вилла в Калкане — с бассейном, тремя террасами и видом на бухту, который открывается прямо от завтрака. Здесь можно занять кухню в час ночи, включить музыку на весь дом и не встретить ни одного постороннего человека.</p>
+    </div>
+
+    <div class="mosaic">
+      <div class="mo mo-a reveal"><img src="images/terrace_view.jpg" alt="Терраса с шезлонгами и панорамой бухты Калкана" loading="lazy"><div class="cap">Верхняя терраса</div></div>
+      <div class="mo mo-b reveal"><img src="images/villa_facade.jpg" alt="Фасад виллы и бассейн" loading="lazy"><div class="cap">Бассейн</div></div>
+      <div class="mo mo-c reveal"><img src="images/pergola_pool.jpg" alt="Обеденный стол под перголой у бассейна" loading="lazy"><div class="cap">Завтраки</div></div>
+      <div class="mo mo-d reveal"><img src="images/living.jpg" alt="Гостиная виллы с видом на море" loading="lazy"><div class="cap">Гостиная</div></div>
+      <div class="mo mo-e reveal"><img src="images/pingpong.jpg" alt="Теннисный стол во внутреннем дворе" loading="lazy"><div class="cap">Внутренний двор</div></div>
+      <div class="mo mo-h reveal"><img src="images/terrace_long.jpg" alt="Длинная терраса с обеденным столом под перголой" loading="lazy"><div class="cap">Длинный стол</div></div>
+      <div class="mo mo-i reveal"><img src="images/kitchen.jpg" alt="Кухня виллы с барной стойкой" loading="lazy"><div class="cap">Кухня</div></div>
+      <div class="mo mo-f reveal"><img src="images/villa_night.jpg" alt="Вилла вечером" loading="lazy"><div class="cap">Вечер</div></div>
+      <div class="mo mo-g reveal"><img src="images/pool_night.jpg" alt="Подсвеченный бассейн ночью" loading="lazy"><div class="cap">Ночь у воды</div></div>
+    </div>
+
+    <div class="mosaic" style="margin-top:clamp(8px,1.1vw,16px)">
+      <div class="mo mo-wide reveal"><img src="images/yoga.jpg" alt="Коврики и инвентарь для утренней йоги на террасе виллы" loading="lazy"><div class="cap">Утро начинается здесь</div></div>
+    </div>
+
+    <div class="facts reveal">
+      <div><span>Комнаты</span><b>Спальни с ванными на двух этажах</b></div>
+      <div><span>На крыше</span><b>Джакузи и панорамная терраса</b></div>
+      <div><span>Для тела</span><b>Йога-зона, коврики, инвентарь</b></div>
+      <div><span>Для компании</span><b>Кухня, теннис, длинный стол на всех</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════  PLACE  ══════════════════════════ -->
+<section class="section" id="place">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="n">05</span> Место</p>
+    <div class="twocol reveal">
+      <h2 class="h2">Каш и Калкан</h2>
+      <p class="lede">Два городка на Ликийском побережье в часе езды друг от друга. Калкан — белые дома по склону, спускающиеся к гавани, и рестораны на крышах. Каш — богемнее и живее: художники, лавки, лодки до греческого острова прямо напротив. Ни в одном из них нет высоток и пакетных отелей — и именно поэтому мы едем сюда.</p>
+    </div>
+    <div class="place-grid">
+      <figure class="reveal"><img src="images/kas_sunset.jpg" alt="Закат над бухтой Каша" loading="lazy"><figcaption>Бухта на закате</figcaption></figure>
+      <figure class="reveal"><img src="images/kalkan_street.jpg" alt="Вечерняя улица Калкана с ресторанами" loading="lazy"><figcaption>Улицы Калкана</figcaption></figure>
+      <figure class="reveal"><img src="images/kas_alley.jpg" alt="Лестница, спускающаяся к морю" loading="lazy"><figcaption>Лестницы к воде</figcaption></figure>
+      <figure class="reveal"><img src="images/kalkan_collage.jpg" alt="Бугенвиллея, набережная и керамика Калкана" loading="lazy"><figcaption>Керамика и цветы</figcaption></figure>
+      <figure class="reveal"><img src="images/pl_cocktails.jpg" alt="Коктейли на столе с видом на море и горы" loading="lazy"><figcaption>Вечер с видом</figcaption></figure>
+      <figure class="reveal"><img src="images/d1_cove.jpg" alt="Лодка в укромной бухте среди скал и сосен" loading="lazy"><figcaption>Укромные бухты</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════  PRICE  ══════════════════════════ -->
+<section class="section" id="price">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="n">06</span> Стоимость</p>
+    <h2 class="h2 reveal" style="max-width:15ch;margin-bottom:clamp(28px,4.5vw,50px)">Что входит в неделю</h2>
+
+    <div class="price-card reveal">
+      <div class="rates">
+        <div class="rate">
+          <span class="who">Резиденткам Hedonist Club и Woman Create Club</span>
+          <b>720 000 <i>₸</i></b>
+          <small>7 дней / 6 ночей на приватной вилле</small>
+        </div>
+        <div class="rate rate--new">
+          <span class="who">Новым участницам</span>
+          <b>820 000 <i>₸</i></b>
+          <small>7 дней / 6 ночей на приватной вилле</small>
+        </div>
+      </div>
+
+      <div class="incl">
+        <div>
+          <h4>Входит в стоимость</h4>
+          <ul class="incl--yes">
+            <li>6 ночей на приватной вилле в Калкане</li>
+            <li>Завтраки на вилле каждый день</li>
+            <li>Все трансферы: аэропорт и передвижение внутри тура</li>
+            <li>Выход в море на яхте: купание в бухтах и закат на воде</li>
+            <li>Приветственный ужин на террасе</li>
+            <li>Ежедневные практики: йога, дыхание, медитации</li>
+            <li>Подарок каждой участнице</li>
+            <li>Фото- и видеосъёмка на протяжении всей поездки</li>
+            <li>Сопровождение организаторов 24/7</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Не входит</h4>
+          <ul class="incl--no">
+            <li>Авиабилеты</li>
+            <li>Медицинская страховка</li>
+            <li>Обеды и ужины</li>
+            <li>Посещение бич-клабов</li>
+            <li>Личные расходы и покупки</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="terms">
+        <div><span>Бронирование</span><p>Место закрепляется предоплатой 50%. Остаток — до вылета.</p></div>
+        <div><span>Группа</span><p>Мы намеренно собираем маленькую камерную группу. Мест ограниченное количество.</p></div>
+        <div><span>Виза</span><p>Гражданам Казахстана и России виза в Турцию не нужна.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════  FAQ  ══════════════════════════ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <p class="eyebrow reveal"><span class="n">07</span> Вопросы</p>
+    <h2 class="h2 reveal" style="max-width:14ch;margin-bottom:clamp(24px,4vw,44px)">Что обычно спрашивают</h2>
+    <div class="faq reveal">
+      <details>
+        <summary>Я еду одна и никого не знаю. Это нормально?</summary>
+        <div class="ans">Это самый частый сценарий — большинство приезжает поодиночке. К концу первого ужина вы уже не вспомните, что кого-то не знали: формат камерной группы и общий дом устроены ровно для этого.</div>
+      </details>
+      <details>
+        <summary>Сколько нас будет?</summary>
+        <div class="ans">Маленькая камерная группа — столько, сколько комфортно помещается в одном доме за одним столом. Мы не добираем людей ради экономики: как только места закончились, набор закрывается.</div>
+      </details>
+      <details>
+        <summary>Кто считается резиденткой?</summary>
+        <div class="ans">Участницы Hedonist Club и Woman Create Club — для них действует цена 720 000 ₸. Для всех остальных стоимость участия 820 000 ₸.</div>
+      </details>
+      <details>
+        <summary>Куда прилетать?</summary>
+        <div class="ans">Ближайший аэропорт — Даламан, дорога до Калкана вдоль побережья занимает около двух часов. Также можно лететь в Анталию, оттуда примерно три с половиной часа. Мы подскажем оптимальные рейсы и подстроим трансферы под ваш билет.</div>
+      </details>
+      <details>
+        <summary>Как забронировать место?</summary>
+        <div class="ans">Напишите нам в WhatsApp — мы созвонимся, ответим на вопросы и убедимся, что формат вам подходит. Место закрепляется предоплатой 50%, остаток вносится до вылета.</div>
+      </details>
+      <details>
+        <summary>Нужна ли страховка?</summary>
+        <div class="ans">Да, медицинская страховка обязательна для участия. В стоимость она не входит — поможем подобрать и оформить.</div>
+      </details>
+      <details>
+        <summary>Какая погода в сентябре?</summary>
+        <div class="ans">Лучшее время на Ликийском побережье: около +28…+30 днём, море прогрето за лето до +26, а изнуряющая жара уже ушла. Вечера тёплые, но не душные.</div>
+      </details>
+      <details>
+        <summary>Что взять с собой?</summary>
+        <div class="ans">Купальники, удобную обувь для каменных улочек, что-то лёгкое с рукавом на вечер и одно платье для нашей вечеринки. Полный список пришлём после бронирования.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════  BOOK  ══════════════════════════ -->
+<section class="section book" id="book">
+  <img class="book-bg" src="images/terrace_long.jpg" alt="" aria-hidden="true" loading="lazy">
+  <div class="wrap">
+    <p class="eyebrow reveal" style="max-width:520px"><span class="n">08</span> Бронирование</p>
+    <h2 class="h2 reveal" style="max-width:13ch">Мест ограниченное количество</h2>
+    <p class="lede reveal" style="margin-top:18px">Напишите нам в WhatsApp — расскажем детали, ответим на вопросы и закрепим за вами место. Отвечаем лично, обычно в течение дня.</p>
+    <div class="hero-cta reveal" style="margin-top:30px">
+      <a class="btn btn--solid" href="https://wa.me/77772993881" target="_blank" rel="noopener">Написать в WhatsApp <span class="ar">→</span></a>
+      <a class="btn btn--ghost" href="https://www.instagram.com/thehedonist.club" target="_blank" rel="noopener">Мы в Instagram</a>
+    </div>
+    <div class="contacts reveal">
+      <a href="https://wa.me/77772993881" target="_blank" rel="noopener"><span>WhatsApp</span><b>+7 777 299 38 81</b></a>
+      <a href="https://www.instagram.com/thehedonist.club" target="_blank" rel="noopener"><span>Instagram</span><b>@thehedonist.club</b></a>
+    </div>
+  </div>
+  </section>
+
+<!-- ══════════════════════════  FOOTER  ══════════════════════════ -->
+<footer class="foot">
+  <div class="wrap foot-in">
+    <a class="brand" href="#top"><span class="mark" aria-hidden="true"><svg viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 26h94" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M29 26a21 21 0 0 1 42 0" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span><span class="brand-txt"><b>The&nbsp;Hedonist<br>Club</b><i>Искусство жить в удовольствие</i><span>Kaş × Kalkan · 18–24.09.2026</span></span></a>
+    <small>Информация на сайте не является публичной офертой. Организатор оставляет за собой право менять последовательность пунктов программы, сохраняя её наполнение. © 2026 The Hedonist Club.</small>
+  </div>
+</footer>
+
+<!-- ══════════════════════════  MOBILE BAR  ══════════════════════════ -->
+<div class="mobar">
+  <div><span class="who">18–24 сентября · от</span><span class="val">720 000 ₸</span></div>
+  <a class="btn btn--solid" href="#book">Забронировать</a>
+</div>
+
+<script>
+(function(){
+  var nav = document.getElementById('nav');
+  var onScroll = function(){ nav.classList.toggle('stuck', window.scrollY > 40); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {rootMargin:'0px 0px -10% 0px', threshold:0.05});
+
+  items.forEach(function(el, i){
+    el.style.transitionDelay = (Math.min(i % 6, 5) * 60) + 'ms';
+    io.observe(el);
+  });
+})();
+</script>
+
+</body>
+</html>
