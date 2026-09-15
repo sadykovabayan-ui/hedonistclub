@@ -1,0 +1,22 @@
+/* Alternate palette; the approved dark stylesheet remains untouched. */
+:root{--paper:#ffffff;--ink:#172c32;--rust:#ff5900;--line:#cddde0;--muted:#52676c;--sea:#b9ebf5;--sea-soft:#eaf8fb}
+body{background:var(--paper);color:var(--ink)}
+.nav-end{background:var(--rust);border-color:var(--rust);color:#172c32;font-weight:700}.nav-end:hover{background:#ff7b26;color:#172c32}
+.wordmark .sun,.contact .sun{color:var(--rust)}
+.new-hero,.trip-meta,.trip h3,.badge,.cap{color:#fff}
+.hero-copy .label,.image-caption{color:white}
+.btn,.btn-lime,.trip-bottom>a{background:var(--rust);border-color:var(--rust);color:#172c32}
+.btn:hover,.btn-lime:hover,.trip-bottom>a:hover{background:#ff7b26;border-color:#ff7b26}
+.ribbon{background:var(--sea);color:#174b58}.ribbon b{color:#e94d00}
+.manifesto{background:var(--rust);color:#172c32}.manifesto em{color:#fff}
+em,.contact h2 em{color:#d64700}
+.reason>span{color:#066b83;background:var(--sea);border-radius:50%;width:34px;height:34px;text-align:center;line-height:34px;padding:0}
+.reason{gap:18px}
+.contact{background:var(--sea);color:#172c32}.contact .label,.contact p{color:#355760}
+.price-box,.villa-section{background:var(--sea-soft)}
+.notice{background:#e0f5fa;border-color:#ff5900;color:#355760}
+summary:after{color:#08718a}
+.facts{border-bottom:3px solid var(--sea)}
+.footer{background:white}
+a:focus-visible,summary:focus-visible{outline-color:#08718a}
+@media(max-width:650px){.reason{grid-template-columns:28px 1fr;gap:14px}.reason>span{width:27px;height:27px;line-height:27px}}
